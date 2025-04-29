@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import {
   LayoutDashboard,
@@ -36,6 +36,9 @@ const SidebarItem = ({ icon: Icon, label, href, active }: SidebarItemProps) => {
 };
 
 export default function Sidebar() {
+  const location = useLocation();
+  const currentPath = location.pathname;
+
   return (
     <div className="hidden md:flex h-screen w-64 flex-col border-r border-dashboard-border-light bg-white">
       {/* Logo */}
@@ -55,12 +58,32 @@ export default function Sidebar() {
             icon={LayoutDashboard}
             label="Dashboard"
             href="/"
-            active
+            active={currentPath === '/'}
           />
-          <SidebarItem icon={ShoppingCart} label="Orders" href="/orders" />
-          <SidebarItem icon={Package} label="Products" href="/products" />
-          <SidebarItem icon={Users} label="Customers" href="/customers" />
-          <SidebarItem icon={Settings} label="Settings" href="/settings" />
+          <SidebarItem 
+            icon={ShoppingCart} 
+            label="Orders" 
+            href="/orders" 
+            active={currentPath === '/orders'}
+          />
+          <SidebarItem 
+            icon={Package} 
+            label="Products" 
+            href="/products" 
+            active={currentPath === '/products'}
+          />
+          <SidebarItem 
+            icon={Users} 
+            label="Customers" 
+            href="/customers" 
+            active={currentPath === '/customers'}
+          />
+          <SidebarItem 
+            icon={Settings} 
+            label="Settings" 
+            href="/settings"
+            active={currentPath === '/settings'} 
+          />
         </nav>
       </div>
 
