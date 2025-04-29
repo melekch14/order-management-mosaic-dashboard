@@ -106,3 +106,44 @@
     scrollbar-width: none;
   }
 }
+
+/* Animation Utility Classes */
+.hover-scale {
+  @apply transition-transform duration-200;
+}
+.hover-scale:hover {
+  @apply scale-105;
+}
+
+.hover-lift {
+  @apply transition-all duration-200;
+}
+.hover-lift:hover {
+  @apply translate-y-[-2px] shadow-md;
+}
+
+.pulse-animation {
+  @apply animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite];
+}
+
+.fade-in {
+  @apply animate-fade-in;
+}
+
+.fade-out {
+  @apply animate-fade-out;
+}
+
+/* Button animation effects */
+button.btn-animate {
+  @apply relative overflow-hidden transition-all duration-300;
+}
+
+button.btn-animate::after {
+  content: '';
+  @apply absolute top-0 left-[-100%] h-full w-full bg-white/20 transform skew-x-12 transition-all duration-700;
+}
+
+button.btn-animate:hover::after {
+  @apply left-[100%];
+}
